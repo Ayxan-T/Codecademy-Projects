@@ -50,15 +50,47 @@ function validateCred(Arr) {
     }
     return false;
 }
-
 // console.log(validateCred(valid1));
 // batch.forEach((card) => console.log(validateCred(card)))
 
+function findInvalidCards(nestedArr) {
+    return nestedArr.filter(arr => {
+        return !validateCred(arr);
+    })
+}
+// console.log(findInvalidCards(batch));
 
-
-
-
-
-
-
-
+function idInvalidCardCompanies(nestedArr) {
+    let res = []
+    for (let arr of nestedArr) {
+        if (arr[0] === 3) {
+            if (!res.includes('Amex')) {
+                res.push('Amex');
+            }
+            continue;
+        }
+        if (arr[0] === 4) {
+            if (!res.includes('Visa')) {
+                res.push('Visa');
+            }
+            continue;
+        }
+        if (arr[0] === 5) {
+            if (!res.includes('Mastercard')) {
+                res.push('Mastercard');
+            }
+            continue;
+        }
+        if (arr[0] === 6) {
+            if (!res.includes('Discover')) {
+                res.push('Discover');
+            }
+            continue;
+        }
+        if (!res.includes('Unknown')) {
+            res.push('Unknown')
+        }
+    }
+    return res;
+}
+// console.log(idInvalidCardCompanies(findInvalidCards(batch)));
