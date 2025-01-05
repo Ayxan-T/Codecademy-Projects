@@ -22,7 +22,37 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];
 // An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
 
+function validateCred(Arr) {
+    const arr = []
+    let i = Arr.length - 1
+    let double = false;
+    while (i >= 0) {
+        if (double) {
+            arr.unshift((Arr[i] * 2 > 9) ? (Arr[i] * 2 - 9) : (Arr[i] * 2));
+            // console.log(arr);
+            double = false;
+        } else {
+            arr.unshift(Arr[i]);
+            // console.log(arr);
+            double = true;
+        }
+        i--;
+    }
+    // console.log(arr);
 
+    const sum = arr.reduce((acc, cur) => {
+        return acc + cur;
+    })
+    // console.log(sum);
+
+    if (sum % 10 === 0) {
+        return true;
+    }
+    return false;
+}
+
+// console.log(validateCred(valid1));
+// batch.forEach((card) => console.log(validateCred(card)))
 
 
 
