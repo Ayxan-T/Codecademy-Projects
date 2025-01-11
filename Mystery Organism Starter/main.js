@@ -13,7 +13,29 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
+const pAequorFactory = (specimenNum, dna) => {
+  // TODO: Check specimenNum uniqueness
+  return {
+    specimenNum,
+    dna,
+    mutate() {
+      const index = Math.floor(Math.random() * 15);
+      const selectedBase = this.dna[index];
+      let randSelectedBase;
 
+      // select random base until it is different than current base
+      do {
+        randSelectedBase = returnRandBase();
+      } while (randSelectedBase === selectedBase);
+      this.dna[index] = randSelectedBase;
+      
+      return this.dna;
+    }
+  }
+}
+
+const test = pAequorFactory(0, ['A', 'T', 'C', 'G', 'A', 'T', 'C', 'G', 'A', 'T', 'C', 'G', 'A', 'T', 'C']);
+console.log(test.mutate())
 
 
 
