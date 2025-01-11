@@ -34,8 +34,8 @@ const pAequorFactory = (specimenNum, dna) => {
   }
 }
 
-const test = pAequorFactory(0, ['A', 'T', 'C', 'G', 'A', 'T', 'C', 'G', 'A', 'T', 'C', 'G', 'A', 'T', 'C']);
-console.log(test.mutate())
+// const test = pAequorFactory(0, ['A', 'T', 'C', 'G', 'A', 'T', 'C', 'G', 'A', 'T', 'C', 'G', 'A', 'T', 'C']);
+// console.log(test.mutate())
 
 
 
