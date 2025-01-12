@@ -40,6 +40,20 @@ const pAequorFactory = (specimenNum, dna) => {
       }
       const percentage = (count / 15) * 100;
       console.log(`specimen #${this.specimenNum} and specimen #${p.specimenNum} have ${percentage}% DNA in common.`)
+    },
+    willLikelySurvive() {
+      let count = 0;
+      this.dna.forEach(base => {
+        if (base === 'C' || base === 'G') {
+          count++;
+        }
+      });
+
+      // considering pAequors always have 15 bases in their dna
+      if (count >= 9) {
+        return true;
+      }
+      return false;
     }
   }
 }
