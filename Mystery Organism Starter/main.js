@@ -54,6 +54,26 @@ const pAequorFactory = (specimenNum, dna) => {
         return true;
       }
       return false;
+    },
+    complementStrand() {
+      const complement = [];
+      for (let i = 0; i < 15; i++) {
+        switch(this.dna[i]) {
+          case 'A':
+            complement.push('T');
+            break;
+          case 'T':
+            complement.push('A');
+            break;
+          case 'C':
+            complement.push('G');
+            break;
+          case 'G':
+            complement.push('C');
+            break;
+        }
+      }
+      return complement;
     }
   }
 }
@@ -70,8 +90,12 @@ const pAequorFactory = (specimenNum, dna) => {
 //// Output: specimen #0 and specimen #1 have 66.66666666666666% DNA in common.
 ////// 
 
+const instances = [];
+for (let i = 0; i < 30; i++) {
+  instances.push(pAequorFactory(i, mockUpStrand()));
+}
 
-
-
-
-
+//// for testing .complementStrand()
+// console.log(instances[5].dna);
+// console.log(instances[5].complementStrand());
+//////
